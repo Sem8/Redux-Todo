@@ -31,3 +31,6 @@
     transform: rotate(360deg);
   }
 }
+.todoListH4.completed {
+  text-decoration: line-through;
+}

@@ -21,9 +21,9 @@ class TodoList extends Component {
     this.props.toggleTask(taskId);
   };
 
-  deleteTask = (taskId) => {
-    this.props.deleteTask(taskId);
-  }
+  // deleteTask = (taskId) => {
+  //   this.props.deleteTask(taskId);
+  // }
 
 
 
@@ -31,10 +31,10 @@ class TodoList extends Component {
     return (
       <>
       <div>
-        <div className='todoList'>
-        {this.props.todoList.map((eachTodo, index) => (
-          <h4 key={index} onClick={() => this.toggleTask(index)}>
-            {eachTodo.value} <span><button key={index} onClick={() => this.props.deleteTask(eachTodo.id)}>Delete</button></span>
+        <div className='todoListDiv'>
+        {this.props.todoList.map((eachTodo) => (
+          <h4 key={eachTodo.id} onClick={() => this.toggleTask(eachTodo.id)} className={`todoListH4 ${eachTodo.completed ? 'completed' : ''}`}>
+            {eachTodo.value} <span><button onClick={() => this.props.deleteTask(eachTodo.id)}>Delete</button></span>
           </h4> 
         )
         )}
@@ -50,7 +50,7 @@ class TodoList extends Component {
               value={this.state.newTask}
                />
                <button onClick={this.addTask}>Add To do</button>
-               <button >Clear completed</button>              
+               <button>Only walk the dog</button>              
               
           </form>
         </div>    
