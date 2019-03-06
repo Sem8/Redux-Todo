@@ -1,4 +1,4 @@
-import { ADD_TASK, DELETE_TASK, TOGGLE_TASK } from '../actions';
+import { ADD_TASK, DELETE_TASK, TOGGLE_TASK, PRIORITIZE_TASK } from '../actions';
 
 const initialState = {
     todos: [
@@ -41,6 +41,12 @@ const taskReducer = (state = initialState, action) => {
                     return eachTodo;
                 })
             };
+
+            case PRIORITIZE_TASK:
+                return {
+                    ...state,
+                    todos: state.todos.filter(eachTodo => eachTodo.id === action.payload)
+                };
            
             default:
                 return state;                   

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addTask, toggleTask, deleteTask } from '../../actions';
+import { addTask, toggleTask, deleteTask, prioritizeTask } from '../../actions';
 
 class TodoList extends Component {
   state = {
@@ -25,8 +25,6 @@ class TodoList extends Component {
   //   this.props.deleteTask(taskId);
   // }
 
-
-
   render() {
     return (
       <>
@@ -34,7 +32,9 @@ class TodoList extends Component {
         <div className='todoListDiv'>
         {this.props.todoList.map((eachTodo) => (
           <h4 key={eachTodo.id} onClick={() => this.toggleTask(eachTodo.id)} className={`todoListH4 ${eachTodo.completed ? 'completed' : ''}`}>
-            {eachTodo.value} <span><button onClick={() => this.props.deleteTask(eachTodo.id)}>Delete</button></span>
+            {eachTodo.value} 
+            <span><button onClick={() => this.props.deleteTask(eachTodo.id)}>Delete</button></span>
+            <span><button onClick={() => this.props.prioritizeTask(eachTodo.id)}>Prioritize</button></span>
           </h4> 
         )
         )}
@@ -66,5 +66,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addTask, toggleTask, deleteTask }
+  { addTask, toggleTask, deleteTask, prioritizeTask }
 )(TodoList);
